@@ -12,7 +12,7 @@ How can this problem occur
 
 We recently ran into an issue where a MapStruct mapper produced an incorrect result. The cause was a parameter name that was used on a nested object and a parameter on the mapper itself.
 
-Let's say we want have a Person with a field name and age, A standalone String called name and a PersonDto with a name and age. We create a Mapper to map the standalone String and the Person to a PersonDto.
+Let's say we want have a `Person` with a field name and age, A standalone `String` called `name` and a `PersonDto` with a `name` and `age`. We create a Mapper to map the standalone `String` and the `Person` to a `PersonDto`.
 
 ```java
 @Mapper
@@ -23,10 +23,10 @@ public interface PersonMapper {
 }
 ```
 
-Which name will occur on the PersonDto?
-If we go into the generated code (one of the reasons to use MapStruct is that you can easily view the generated code) we'll see that Person.name is used. This is clearly not our intention, why would we add a name field otherwise?
+Which name will occur on the `PersonDto`?
+If we go into the generated code (one of the reasons to use MapStruct is that you can easily view the generated code) we'll see that `Person.name` is used. This is clearly not our intention, why would we add a name field otherwise?
 
-Imagine someone adds the name field on Person after the Mapper is running in production, do you think you will catch this mistake?
+Imagine someone adds the `name` field on `Person` after the Mapper is running in production, do you think you will catch this mistake?
 
 Since this mistake was easy to make and can be hard to spot I tried to figure out how we can prevent these kind of issues.
 
@@ -39,17 +39,17 @@ The concept
 ---
 
 What I basically wanted to do is create a random object for all the source parameters of the mapping. Since creating manual objects is tedious and requires more maintenace. So we need to set a bunch of random parameters and even set the deeply nested. The target object we'call the reference object.
-Now we'll call the Mapper one time for every parameter with one parameter set to null. The new target object should be different to the reference object otherwise we have a parameter that doesn't do anything (like the Person.name example I mentioned earlier).
+Now we'll call the Mapper one time for every parameter with one parameter set to `null`. The new target object should be different to the reference object otherwise we have a parameter that doesn't do anything (like the `Person.name` example I mentioned earlier).
 
 So with this concept ready we have to take a step back and prepare a few things first.
 
 <h2>Check your MapStruct configuration first</h2>
 
-Before you start testing it is a good idea to make sure the <code>mapstruct.unmappedTargetPolicy</code> is set to <a href="https://mapstruct.org/documentation/stable/reference/html/#configuration-options" target="_blank"/>ERROR</a>: "any unmapped target property will cause the mapping code generation to fail". This is super annoying at first, but will result in more reliable code and a higher development speed.
+Before you start testing it is a good idea to make sure the <code>mapstruct.unmappedTargetPolicy</code> is set to <a href="https://mapstruct.org/documentation/stable/reference/html/#configuration-options" target="_blank"/>ERROR</a>: "_any unmapped target property will cause the mapping code generation to fail_". This is super annoying at first, but will result in more reliable code and a higher development speed.
 
 <h2>Make sure all our mappers are tested</h2>
 
-When you add a new mapper to your code base you of course want it tested. A first solution would be scan for the @Mapper annotation and initialize the Mappers. This fails with nested mappers and in other ways since some mappers have parameters in the constructor.
+When you add a new mapper to your code base you of course want it tested. A first solution would be scan for the `@Mapper` annotation and initialize the Mappers. This fails with nested mappers and in other ways since some mappers have parameters in the constructor.
 
 Our solution is to count the number of Mappers and initialize them manually and verify the count corresponds with the number of manual initializations.
 For this we use <a href="https://www.archunit.org/" target="_blank">ArchUnit</a>.
@@ -92,13 +92,13 @@ With inheritance you might run into trouble. You'll probably encounter an error 
 - Unable to create a random instance of type interface io.vavr.collection.Seq
 ```
 
-Let's say we have an abstract Person class with multiple implementations. When using the method described in this article you have to pick an implementation. In this example we'll use the Customer:
+Let's say we have an abstract `Person` class with multiple implementations. When using the method described in this article you have to pick an implementation. In this example we'll use the `Customer`:
 ```java
 EasyRandomParameters parameters = new EasyRandomParameters()
     .randomize(Person.class, () -> easyRandom.nextObject(Customer.class))
 ```
 
-When you want to leave it up to EasyRandom you can set the setScanClasspathForConcreteTypes to true.
+When you want to leave it up to EasyRandom you can set the `setScanClasspathForConcreteTypes` to `true`.
 
 Another thing that can happen is that the constructor of an object expects something to be valid (a count of something for example). You can solve this with a static value :
 ```java
@@ -171,10 +171,10 @@ public abstract class AbstractAllMapperTest {
 ```
 
 Since there are usually multiple Mappers in a project I started with an abstract class you can extend from.
-The first method test is where you pass the <b>implementation</b> of your Mapper. PersonMapperImpl for example. The second parameter is your EasyRandom configuration. new EasyRandomParameters() for simple cases, but you'll soon discover that you want some configuration here.
-This method scans all the public methods in the Mapper and calls callAndIterateOverParams for each method.
+The first method test is where you pass the <b>implementation</b> of your Mapper. `PersonMapperImpl` for example. The second parameter is your EasyRandom configuration. `new EasyRandomParameters()` for simple cases, but you'll soon discover that you want some configuration here.
+This method scans all the public methods in the Mapper and calls `callAndIterateOverParams` for each method.
 
-CallAndIterateOverParams initializes the reference object and then iterates over all the parameters of the method. In each iteration one parameter is set to null and compared to the reference object. If it differs we're safe and otherwise chances are there is a mapping error.
+`callAndIterateOverParams` initializes the reference object and then iterates over all the parameters of the method. In each iteration one parameter is set to `null` and compared to the reference object. If it differs we're safe and otherwise chances are there is a mapping error.
 
 Example output
 ---
@@ -193,14 +193,14 @@ Now it is immediately clear what might be wrong.
 Next level
 ---
 
-The first thing we ran into was that this method of testing can be a bit brittle, so we needed an option to skip a method. We added a method methodsToSkip that returns a list of method names as String and called it from a filter between the existing filters in the test method. For us this works, but when there is method overloading you have to tune this part.
+The first thing we ran into was that this method of testing can be a bit brittle, so we needed an option to skip a method. We added a method `methodsToSkip` that returns a list of method names as `String` and called it from a filter between the existing filters in the test method. For us this works, but when there is method overloading you have to tune this part.
 
 ```java
 .filter(method -> methodsToSkip().stream().noneMatch(methodName -> methodName.equals(method.getName())))
 ```
 
 Collections are another issue. The current test code creates an empty collections and this won't cover all the mapping errors.
-To fix this we have to extend the part where easyRandom.nextObject is called.
+To fix this we have to extend the part where `easyRandom.nextObject` is called.
 
 ```java
 if (ClassUtils.isAssignable(parameter.getType(), Collection.class)) {
@@ -228,7 +228,7 @@ private Iterable<Object> createRandomCollection(final EasyRandom easyRandom, fin
 
 This looks (and probably is) a bit dirty. I'm still looking for a cleaner solution, but for now this will suffice.
 
-Finally the createRandomCollectionEntry-method :
+Finally the `createRandomCollectionEntry`-method :
 
 ```java
 private Object createRandomCollectionEntry(final EasyRandom easyRandom, final Type parameterizedType) {
@@ -248,7 +248,7 @@ final Type[] result = (Type[]) ReflectionTestUtils.invokeGetterMethod(parameteri
 Conclusion
 ---
 
-Note that this method only works if you have equals and hashCode methods on your objects. This is of course quite obvious, but when preparing a demo without Lombok I found out the hard way ;-)
+Note that this method only works if you have `equals` and `hashCode` methods on your objects. This is of course quite obvious, but when preparing a demo without Lombok I found out the hard way ;-)
 
 This construction might be a bit brittle, so make sure there is an escape hatch. The danger of course is that some people will take the easy way out, so be sure your code review process is in order (I even added it to my checklist I check a few times a month).
 
