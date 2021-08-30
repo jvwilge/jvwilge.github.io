@@ -12,7 +12,7 @@ How can this problem occur
 
 We recently ran into an issue where a MapStruct mapper produced an incorrect result. The cause was a parameter name that was used on a nested object and a parameter on the mapper itself.
 
-Let's say we want have a `Person` with a field name and age, A standalone `String` called `name` and a `PersonDto` with a `name` and `age`. We create a Mapper to map the standalone `String` and the `Person` to a `PersonDto`.
+Let's say we want have a `Person` with a field `name` and `age`, A standalone `String` called `name` and a `PersonDto` with a `name` and `age`. We create a Mapper to map the standalone `String` and the `Person` to a `PersonDto`.
 
 ```java
 @Mapper
