@@ -179,7 +179,16 @@ CallAndIterateOverParams initializes the reference object and then iterates over
 Example output
 ---
 
-TODO voorbeeld van een fout laten zien.
+Now everything is set up we can test the example I mentioned in the introduction:
+
+```
+Invoking [class com.demo.PersonMapperImpl#toPersonDto] 
+without parameter [name] (0) 
+has the same result as the reference object, 
+did you map the field?
+```
+
+Now it is immediately clear what might be wrong.
 
 Next level
 ---
@@ -226,9 +235,11 @@ private Object createRandomCollectionEntry(final EasyRandom easyRandom, final Ty
 final Type[] result = (Type[]) ReflectionTestUtils.invokeGetterMethod(parameterizedType, "actualTypeArguments");
 
     try {
-        return easyRandom.nextObject(Class.forName(result[0].getTypeName()));
+        // the split is needed for abstract classes ("? extends" is showed in the String)
+        final String[] typeNames = result[0].getTypeName().split(" ");
+            return easyRandom.nextObject(Class.forName(typeNames[typeNames.length - 1]));
     } catch (ClassNotFoundException e) {
-        e.printStackTrace();
+       e.printStackTrace();
     }
     throw new IllegalStateException("hmm, this should not happen");
 }
@@ -241,24 +252,21 @@ Note that this method only works if you have equals and hashCode methods on your
 
 This construction might be a bit brittle, so make sure there is an escape hatch. The danger of course is that some people will take the easy way out, so be sure your code review process is in order (I even added it to my checklist I check a few times a month).
 
-In our project quite a few errors are caught with a very small amount of false positives, so it might be useful for you project too.
+In our project quite a few errors were caught with a very small amount of false positives, so it might be useful for you project too.
 
 For my own taste there is a little too much reflection and dirty constructions, but it is a quite useful addition to our code base.
 
 Libraries used
 ---
 
-https://mapstruct.org/
+[MapStruct](https://mapstruct.org/)
 
-https://www.archunit.org/
+[ArchUnit](https://www.archunit.org/)
 
-https://github.com/j-easy/easy-random
-
-
-TOOD inheritance met collecties werkt nog niet
+[Easy-Random](https://github.com/j-easy/easy-random)
 
 > First published on Aug 31, 2021 at [jvwilge.github.io](http://jvwilge.github.io)
 > 
-> :label: : mapstruct, easy-random, java
+> tags : mapstruct, easy-random, java
 > 
-> language: en :uk:
+> language: en
