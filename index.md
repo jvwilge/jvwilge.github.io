@@ -4,7 +4,7 @@ If you use (parts of) an article please add a reference, thank you!
 ----
 ### 2021
 
-<!-- - [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](mapstruct-easyrandom.md) -->
+- 30-aug-21 : [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](mapstruct-easyrandom.md)
 
 ### 2020
 
@@ -24,20 +24,5 @@ If you use (parts of) an article please add a reference, thank you!
 ---
 -->
 
-----
-Earlier articles can be found on my old [wordpress site](https://vanwilgenburg.wordpress.com/)
-
-<!--
-**jvwilge/jvwilge** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+------
+[Github profile](http://github.com/jvwilge) | [Stackoverflow profile](https://stackoverflow.com/users/833009/jvwilge) | [articles written before 2021](https://vanwilgenburg.wordpress.com/)
