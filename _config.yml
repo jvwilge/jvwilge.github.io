@@ -1,6 +1,6 @@
 plugins:
   - jekyll-feed
 title: Jeroen van Wilgenburg's Blog
-description: Welcome to my blog
+description: Java technology related articles
 author: Jeroen van Wilgenburg
 theme: jekyll-theme-modernist
