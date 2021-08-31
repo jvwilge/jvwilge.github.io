@@ -224,10 +224,12 @@ private Iterable<Object> createRandomCollection(final EasyRandom easyRandom,
         if (parameter.getType().equals(List.class)) {
             return List.of(collectionEntry);
         } else {
-            throw new NotImplementedException("parameter type not yet implemented: " + parameter.getType());
+            throw new NotImplementedException("parameter type not yet implemented: " 
+                                                + parameter.getType());
         }
     }
-    throw new NotImplementedException("parameterizedType not yet implemented: " + parameterizedType.getClass());
+    throw new NotImplementedException("parameterizedType not yet implemented: " 
+                                                + parameterizedType.getClass());
 }
 ```
 
@@ -238,7 +240,8 @@ Finally the `createRandomCollectionEntry`-method :
 ```java
 private Object createRandomCollectionEntry(final EasyRandom easyRandom, 
                                            final Type parameterizedType) {
-final Type[] result = (Type[]) ReflectionTestUtils.invokeGetterMethod(parameterizedType, "actualTypeArguments");
+final Type[] result = 
+        (Type[]) ReflectionTestUtils.invokeGetterMethod(parameterizedType, "actualTypeArguments");
 
     try {
         // the split is needed for abstract classes ("? extends" is showed in the String)
