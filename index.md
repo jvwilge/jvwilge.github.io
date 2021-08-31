@@ -4,7 +4,7 @@ If you use (parts of) an article please add a reference, thank you!
 ----
 ### 2021
 
-- 30-aug-21 : [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](mapstruct-easyrandom)
+- 30-aug-21 : [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](2021/mapstruct-easyrandom)
 
 ### 2020
 
