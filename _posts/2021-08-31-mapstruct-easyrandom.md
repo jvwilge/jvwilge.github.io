@@ -5,6 +5,8 @@ date: 2021-08-31 06:08:55
 tags : mapstruct easy-random java
 categories : en
 ---
+Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue
+=====
 
 MapStruct is sometimes a bit blunt regarding duplicate parameter names. Sometimes you don't even notice a parameter name is duplicate (with nested objects for example). This can result in an incorrect mapping and can take a lot of debugging time. In this article I'll show you how you can add a safety net to your mappers.
 
