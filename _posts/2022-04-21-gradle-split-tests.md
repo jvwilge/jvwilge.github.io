@@ -131,7 +131,7 @@ integrationTest.dependsOn tasks.integrationTestFast
 The original `integrationTest` is modified
 
 
-Make sure the `dockerCompose` is moved under the `integrationTestFast` since the `isRequiredBy` can't point downwards and can only have one argument. 
+Make sure the `dockerCompose` task is moved under the `integrationTestFast` since the `isRequiredBy` can't point downwards and can only have one argument. 
 
 Add (or modify `isRequiredBy`) :
 ```groovy
