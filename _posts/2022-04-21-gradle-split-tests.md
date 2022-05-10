@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Splitting up your fast and slow tests in Gradle to receive faster feedback
-description: This article will show you how to run your slow unit/integration after the fast ones. This way you'll get negative feedback quicker so you can spend your time more efficient. 
+content: This article will show you how to run your slow unit/integration after the fast ones. This way you'll get negative feedback quicker so you can spend your time more efficient. 
 date: 2022-04-21 07:51:55
 tags : mapstruct easy-random java
 categories : en
