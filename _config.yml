@@ -3,6 +3,7 @@ plugins:
   - jekyll-seo-tag
 title: Jeroen van Wilgenburg's Blog
 description: Java technology related articles
+excerpt_separator: "<!--more-->"
 author: Jeroen van Wilgenburg
 theme: jekyll-theme-modernist
 google_analytics: UA-206674678-1
