@@ -89,7 +89,7 @@ This will clean up your code and you'll only have to change this class if a fiel
 
 In the long term test fixtures also 'rot away'. The values that once were important or valid might not be that anymore and the values of the fields effectively become random values. Objects can even become inconsistent and people usually do a sloppy fix because they didn't touch the breaking tests (this is how developers work, don't fight it, nudge them in the right direction with a solution).
 
-Test Fixtures + `ReflectionTestUtils`
+Test Fixtures + ReflectionTestUtils
 ---
 
 `ReflectionTestUtils` is a convenience class to set and get fields via java reflections.
@@ -118,7 +118,7 @@ Now we're stuck with `ReflectionTestUtils` but it is clear which fields are **pr
 Another downside here is that if we rename a field a bunch of tests will probably break because of the hardcoded fields names in the `ReflectionTestUtils` constructor.
 
 
-Test Fixtures + `.toBuilder`
+Test Fixtures + .toBuilder
 ---
 
 To prevent tests breaking after renaming fields we added `toBuilder = true` to all our `@Builder` and `@SuperBuilder` annotations. This is still a bit smelly since we adapted production code for our unit tests, but it will make our test much more maintainable.
@@ -145,7 +145,7 @@ void testOrder() {
 ```
 
 
-# EasyRandom + `.toBuilder`
+# EasyRandom + .toBuilder
 
 Our most recent improvement was the introduction of (EasyRandom)[https://github.com/j-easy/easy-random] to create random domain objects. This article isn't about how to use EasyRandom and there are lots of articles to get started already. So I'll skip that part.
 
