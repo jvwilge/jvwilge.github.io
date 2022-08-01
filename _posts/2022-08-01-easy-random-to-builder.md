@@ -2,7 +2,7 @@
 layout: default
 title: Using EasyRandom and Lombok's .toBuilder to improve the sustainability of your Unit tests
 exerpt: 
-date: 2022-08-01 08:43:55
+date: 2022-08-01 06:43:55
 tags : easy-random java lombok spring
 categories : en
 ---
