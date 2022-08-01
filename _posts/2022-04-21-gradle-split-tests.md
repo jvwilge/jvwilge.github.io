@@ -3,7 +3,7 @@ layout: default
 title: Splitting up your fast and slow tests in Gradle to receive faster feedback
 exerpt: 
 date: 2022-04-21 07:51:55
-tags : mapstruct easy-random java
+tags : gradle java
 categories : en
 ---
 Splitting up your fast and slow tests in Gradle to receive faster feedback
@@ -11,7 +11,7 @@ Splitting up your fast and slow tests in Gradle to receive faster feedback
 
 This article will show you how to run your slow unit/integration after the fast ones. This way you'll get negative feedback quicker so you can spend your time more efficient.
 
-<!-- more -->
+<!--more-->
 
 Our project is growing and building it takes about 10 minutes because of our extensive integration test which is waiting a lot on Kafka messages. There also is an ArchUnit test which technically is a unit test, but takes tens of seconds to run.  If there is an error I usually have to wait for those tests to finish since they're executed early in the build flow. So running the fast tests separate from the long ones (with the fast ones first of course) will improve the response time of a build failure if there is an error.
 

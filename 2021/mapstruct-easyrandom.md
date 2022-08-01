@@ -1,3 +1,5 @@
+<!-- note to self: some people might link to this article and not via the rss feed, you created legacy on day one of your blog, congratulations -->
+
 Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue
 ====
 
