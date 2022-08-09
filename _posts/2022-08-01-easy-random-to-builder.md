@@ -193,7 +193,7 @@ An `Order` converted to json might look like this (before overriding the fields)
 Note that `totalAmount` has a negative value, this might trigger some unexpected things (like a validation failing or some branch in your code going hay wire). You can change the behaviour of EasyRandom by setting `easyRandomParameters` on the `EasyRandom` object. Example:
 
 ```java
-new EasyRandomParamters()
+new EasyRandomParameters()
 .randomize(FieldPredicates.named("amount").and(ofType(BigDecimal.class)), () -> {
     // there are currencies with no decimals, int makes sure this always works
     return new BigDecimal(getEasyRandom.get().nextInt()).abs();
