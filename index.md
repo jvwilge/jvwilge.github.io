@@ -6,7 +6,7 @@ If you use (parts of) an article please add a reference, thank you!
 ## Recent posts
 
 <ul class="posts">
-  {% for post in site.posts limit:6 %}
+  {% for post in site.posts limit:3 %}
     <li class="post">
       <a href="{{ post.url }}">{{ post.title }}</a>
       <time class="publish-date" datetime="{{ post.date | date: '%F' }}">
@@ -15,6 +15,10 @@ If you use (parts of) an article please add a reference, thank you!
     </li>
   {% endfor %}
 </ul>
+
+### 2021
+
+- [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](/en/2021/08/31/mapstruct-easyrandom.html)
 
 ### 2020
 
