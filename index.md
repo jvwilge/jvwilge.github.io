@@ -33,6 +33,14 @@ If you use (parts of) an article please add a reference, thank you!
 - [Writing integration tests for CORS headers (with Karate)](https://vanwilgenburg.wordpress.com/2019/05/03/writing-integration-tests-for-cors-headers-with-karate/)
 - [Using ZAP-proxy and nginx to debug and tamper with HTTP traffic – Emulate timeouts and other unexpected behaviour](https://vanwilgenburg.wordpress.com/2019/01/22/embedded-elasticsearch-junit5-spring-boot/)
 
+### 2018
+
+- [Using ZAP-proxy and nginx to debug and tamper with HTTP traffic – Emulate timeouts and other unexpected behaviour](https://vanwilgenburg.wordpress.com/2018/10/02/zap-proxy-and-nginx/)
+- [Lessons learned after serving thousands of concurrent users in a devops team for a year](https://vanwilgenburg.wordpress.com/2018/08/22/lessons-learned-after-serving-thousands-of-concurrent-users-in-a-devops-team-for-a-year/)
+- [Introduction to Java heap tuning – Some easy steps to improve response times
+  ](https://vanwilgenburg.wordpress.com/2018/03/05/introduction-to-java-heap-tuning-some-easy-steps-to-improve-response-times/)
+
+### [Older](https://vanwilgenburg.wordpress.com/)
 <!--
 [2018]() | [2017]() | [2016]() | [2015]() | [2014]() | [2013]()
 ---
