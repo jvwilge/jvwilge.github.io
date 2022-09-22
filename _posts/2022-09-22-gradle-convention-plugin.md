@@ -2,7 +2,7 @@
 layout: default
 title: Sharing build logic across multi repository Gradle projects - A parent pom on steroids
 exerpt: 
-date: 2022-09-22 08:52:40
+date: 2022-09-22 06:52:40
 tags : java gradle
 categories : en
 ---
