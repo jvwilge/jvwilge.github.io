@@ -16,6 +16,10 @@ If you use (parts of) an article please add a reference, thank you!
   {% endfor %}
 </ul>
 
+### 2022
+
+- [Splitting up your fast and slow tests in Gradle to receive faster feedback](/2022/04/21/gradle-split-tests.html)
+
 ### 2021
 
 - [Unit testing your MapStruct mapper for omitted parameters - EasyRandom to the rescue](/en/2021/08/31/mapstruct-easyrandom.html)
@@ -42,7 +46,7 @@ If you use (parts of) an article please add a reference, thank you!
 
 ### [Older](https://vanwilgenburg.wordpress.com/)
 <!--
-[2018]() | [2017]() | [2016]() | [2015]() | [2014]() | [2013]()
+[2017]() | [2016]() | [2015]() | [2014]() | [2013]()
 ---
 -->
 
