@@ -78,7 +78,7 @@ This is basically it. With this file your Spring application spins up the Docker
 Now start your application (i.e. `ComposeDemoApplication`) and you'll notice the `compose.yaml` is detected and started:
 
 ```
-o.s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file '/Users/jeroen//compose-demo/compose.yaml'
+o.s.b.d.c.l.DockerComposeLifecycleManager : Using Docker Compose file '/Users/jeroen/compose-demo/compose.yaml'
 ```
 
 A call to `docker ps` will result in something like this:
