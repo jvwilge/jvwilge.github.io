@@ -182,4 +182,4 @@ This new Spring feature is pretty powerful. I didn't dive into the details of wh
 - [Do you still need testcontainers with Spring Boot 3.1?](https://softwaremill.com/do-you-still-need-testcontainers-with-spring-boot-3-1/#new-spring-boot-docker-compose-module-in-action)
 
 
-> First published on June 21, 2022 at [jvwilge.github.io](http://jvwilge.github.io)
+> First published on June 21, 2023 at [jvwilge.github.io](http://jvwilge.github.io)
